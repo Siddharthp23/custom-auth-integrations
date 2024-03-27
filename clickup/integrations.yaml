@@ -1,0 +1,20 @@
+name: ClickUp Integration
+unique_key: clickup_integration
+docs: https://docs.composio.dev/docs/clickup
+description: Integrate your application with ClickUp to manage tasks, projects, and workspaces.
+logo: https://clickup.com/images/for-se-page/clickup.png
+categories: [Project Management, Productivity, API Integration]
+
+auth_schemes:
+  - scheme_name: OAuth2
+    auth_mode: OAUTH2
+    authorization_url: https://app.clickup.com/api
+    token_url: https://app.clickup.com/api/v2/oauth/token
+    proxy:
+      base_url: https://api.clickup.com
+    fields:
+      - name: base_url
+        displayName: Base URL
+        description: "The base URL is the API endpoint for ClickUp."
+        type: string
+        default: https://api.clickup.com

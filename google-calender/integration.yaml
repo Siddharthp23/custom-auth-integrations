@@ -1,0 +1,26 @@
+name: "Google Calendar"
+docs: https://docs.composio.dev/docs/google-calendar
+unique_key: "google-calendar"
+description: With Google Calendar, you can quickly schedule meetings and events and get reminders about upcoming activities, so you always know what’s next.
+logo: https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AGoogle_Calendar_icon_%25282020%2529.svg&psig=AOvVaw3eWBFZCviouyS1HDIOwomh&ust=1711619714101000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMjdn72WlIUDFQAAAAAdAAAAABAE
+categories: ["productivity", "Digital calendar","Time Management"]
+
+auth_schemes:
+     scheme_name: 
+		auth_mode: OAuth2
+		authorization_url: "https://accounts.google.com/o/oauth2/v2/auth"
+    token_url: https://oauth2.googleapis.com/token
+    default_scopes: ["https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.settings.readonly"]
+    token_response_metadata: [access_token, token_type, scope, expires_in, refresh_token]
+    authorization_params:
+        response_type: code
+    token_params:
+        grant_type: authorization_code_grant
+    proxy:
+      base_url: "{{base_url}}"
+    fields:
+      - name: base_url
+        displayName: Base URL
+        description: The base URL for Google Calendar API requests. For more information, visit https://developers.google.com/calendar"
+        type: string
+        default: https://www.googleapis.com/calendar/v3

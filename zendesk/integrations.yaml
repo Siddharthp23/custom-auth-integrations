@@ -1,0 +1,34 @@
+extends: base/zendesk/integrations.yaml
+docs: https://docs.composio.dev/docs/zendesk
+unique_key: zendesk
+name: Zendesk
+description: Provides Saas products related to customer support, sales, and other customer communications.
+logo: https://raw.githubusercontent.com/SamparkAI/open-logos/853011bff173624654a8f7b64b2399cf2d9e84b3/zendesk.svg
+categories: [support, ticketing]
+
+auth_schemes:
+  - scheme_name: zendesk_oauth
+    auth_mode: OAUTH2
+    # client_id, client_secret will be provided upon request.
+    # Default parameters and fields are determined based on auth_mode
+    authorization_url: "https://{{subdomain}}.zendesk.com/oauth/authorizations/new"
+    token_url: "https://{{subdomain}}.zendesk.com/oauth/tokens"
+    default_scopes: ["users:read users:write tickets:read tickets:write"]
+    token_response_metadata: [access_token, token_type, scope, expires_in, refresh_token]
+    proxy:
+      base_url: "https://{{subdomain}}.zendesk.com"
+
+    authorization_params:
+        response_type: code
+        owner: user
+    token_params:
+        grant_type: authorization_code
+
+    fields:
+      - name: subdomain
+        expected_from_customer: true
+        displayName: Zendesk Subdomain
+        description: "Your Zendesk subdomain (e.g., your-company-name in your-company-name.zendesk.com)"
+        type: string
+        required: true
+

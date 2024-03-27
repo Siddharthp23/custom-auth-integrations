@@ -1,0 +1,48 @@
+unique_key: notion
+name: notion_integration
+description: Notion OAuth Integration Template
+logo: https://raw.githubusercontent.com/SamparkAI/open-logos/3589671765c8f385609d8c9039942b2143be5fe3/notion.svg
+categories: [integration, oauth]
+
+auth_schemes:
+  - scheme_name: public_oauth2
+    auth_mode: OAUTH2
+    authorization_url: https://api.notion.com/v1/oauth/authorize
+    token_url: https://api.notion.com/v1/oauth/token
+    token_request_auth_method: basic
+    proxy:
+      base_url: https://api.notion.com/v1
+    fields:
+      - name: base_url
+        displayName: Base URL
+        description: "The base URL for Notion API requests. Essential for all API calls. For more information, visit the Notion API documentation."
+        type: string
+        default: https://api.notion.com
+    default_scopes: [] # Replace with actual scopes needed for your integration.
+    authorization_params:
+      response_type: code
+      owner: user
+      # Replace with your client ID.
+    token_params:
+      grant_type: authorization_code
+    token_response_metadat:
+      [access_token, token_type, scope, expires_in, refresh_token]
+
+  - scheme_name: internal_api
+    auth_mode: API
+    proxy:
+      base_url: https://api.notion.com
+    fields:
+      - name: base_url
+        displayName: Base URL
+        description: "The base URL for internal API integration. For more information, check Notion API documentation."
+        type: string
+        default: https://api.notion.com/v1
+    default_scopes: [] # This is indicative; adjust based on your actual integration requirements.
+    token_response_metadata:
+      - name: access_token
+      - name: token_type
+      - name: expires_in
+
+documentation:
+  read the documentation first: https://developers.notion.com/docs/authorization
