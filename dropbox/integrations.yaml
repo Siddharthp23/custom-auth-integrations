@@ -1,0 +1,26 @@
+name: Dropbox
+docs: https://docs.composio.dev/docs/dropbox
+unique_key: drop_box
+description: Dropbox is a cloud storage service that allows users to store files securely online and access them from any device with an internet connection.
+logo: https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ADropbox_Icon.svg&psig=AOvVaw0VWLvGeTYPoye03zb951hF&ust=1711779368196000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLCLtJ3pmIUDFQAAAAAdAAAAABAE
+categories: [Cloud Storage  File Sharing Software]
+
+auth_schemes:
+  - scheme_name: Dropbox-OAUTH
+    auth_mode: OAuth2
+    authorization_url: https://www.dropbox.com/oauth2/authorize
+    token_url: https://api.dropboxapi.com/oauth2/token
+    token_access_request_method: post
+    authorization_params:
+      response_type: code
+      token_access_type: offline
+    token_params:
+      grant_type: authorization_code
+    proxy:
+      base_url: "https://your-proxy-server.com"
+    fields:
+      - name: base_url
+        displayName: Base URL
+        description: "the base URL to get more information of Dropbox visit https://www.dropbox.com/developers/documentation"
+        type: string
+        default: https://api.dropboxapi.com
