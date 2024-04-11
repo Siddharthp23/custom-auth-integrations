@@ -6,6 +6,21 @@ description: Tool to help teams organize, track, and manage their work.
 logo: https://raw.githubusercontent.com/SamparkAI/open-logos/853011bff173624654a8f7b64b2399cf2d9e84b3/asana.svg
 categories: [productivity, ticketing]
 
+documentation_doc_text: "[Asana OAuth Documentation](https://developers.asana.com/docs/oauth) [Asana API Documentation](https://developers.asana.com/reference/rest-api-reference)"
+
+configuration_docs_text: "<Tip>New App can be created at [Asana Developer Settings](https://asana.com/plan/starter?gad_source=1&gclid=Cj0KCQjwlN6wBhCcARIsAKZvD5iflFEi8wtvmlPiB52Vok6YUXACZWGR0-XENn764WJlvtbxKtm6Zv0aAlflEALw_wcB&gclsrc=aw.ds&utm_campaign=&utm_medium=&utm_source=).</Tip>\nOnce you create the App, Find the Redirect URL or Callback URL field and configure the below Redirect URL:
+
+```
+https://backend.composio.dev/api/v1/auth-apps/add
+```
+
+After registering the app, copy the Client ID from the app page and generate/copy the Client Secret. On Composio's [supported apps](https://app.composio.dev/apps) page, find GitHub and click "Enable". Paste your Client ID and Secret, then Save to connect GitHub.
+
+"
+get_current_user_endpoint: "https://developers.asana.com/reference/getuser"
+callback_url: https://backend.composio.dev/api/v1/auth-apps/add
+
+
 auth_schemes:
   - scheme_name: asana_oauth
     auth_mode: OAUTH2
