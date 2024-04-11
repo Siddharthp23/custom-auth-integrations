@@ -1,0 +1,42 @@
+name: adobe
+unique_key: adobe
+docs: https://developer.adobe.com/apis
+description: Adobe provides a range of software and services for digital media and digital marketing.
+logo: https://raw.githubusercontent.com/SamparkAI/open-logos/2174415fce40225ab0e09cf5634b6d6484da6747/adobe.svg
+callback_url: https://backend.composio.dev/api/v1/auth-apps/add
+categories: [design]
+
+documentation_doc_text: "\- [Adobe OAuth Documentation](https://developer.adobe.com/developer-console/docs/guides/authentication/OAuth) \- [Adobe API Documentation](https://developer.adobe.com/document-services/docs/overview/pdf-services-api) "
+
+configuration_docs_text: "<Tip>New App can be created at [Adobe Developer Settings](https://www.adobe.com/in/creativecloud/business/teams.html?gclid=Cj0KCQjwlN6wBhCcARIsAKZvD5jL2GDmlO_hCjfvAd3tGwS4dLN_5S3y3Yjv_vU6-wE1yv0iP8Iu8vUaAlMEEALw_wcB&sdid=JQVGW1NH&mv=search&mv2=paidsearch&ef_id=Cj0KCQjwlN6wBhCcARIsAKZvD5jL2GDmlO_hCjfvAd3tGwS4dLN_5S3y3Yjv_vU6-wE1yv0iP8Iu8vUaAlMEEALw_wcB:G:s&s_kwcid=AL!3085!3!693730035504!b!!g!!adobe%20creative%20cloud%20storage!21097140648!163798131510&gad_source=1).</Tip>\nOnce you create the App, find the _Authorization callback URL_ field and configure the below Redirect URL:
+
+```
+https://backend.composio.dev/api/v1/auth-apps/add
+```
+
+After registering the app, copy the Client ID from the app page and generate/copy the Client Secret. On Composio's [supported apps](https://app.composio.dev/apps) page, find GitHub and click "Enable". Paste your Client ID and Secret, then Save to connect GitHub.
+
+"
+get_current_user_endpoint: "https://api.github.com/user"
+callback_url: https://backend.composio.dev/api/v1/auth-apps/add
+
+
+auth_schemes:
+  - scheme_name: adobe_oauth
+    auth_mode: OAUTH2
+    authorization_url: "https://ims-na1.adobelogin.com/ims/authorize/v2"
+    token_url: "https://ims-na1.adobelogin.com/ims/token/v3"
+    default_scopes: ["openid creative_sdk offline_access"]
+    scope_separator: ','
+    token_params:
+      grant_type: authorization_code
+    authorization_params:
+      response_type: code
+    proxy:
+      base_url: "{{base_url}}"
+    fields:
+      - name: base_url
+        displayName: Base URL
+        description: "Your Adobe integration's base URL."
+        type: string
+        default: "https://ims-na1.adobelogin.com/"
