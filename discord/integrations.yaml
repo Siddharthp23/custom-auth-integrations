@@ -6,6 +6,21 @@ description: An instant messaging and VoIP social platform.
 logo: https://raw.githubusercontent.com/SamparkAI/open-logos/7b582f4884cc7012ddff55ef7f811bdd5892fc78/discord.svg
 categories: [gaming, social]
 
+documentation_doc_text: "[Discord OAuth Documentation](https://discord.com/developers/docs/topics/oauth2) [Discord API Documentation](https://discord.com/developers/docs/reference)"
+
+configuration_docs_text: "<Tip>New App can be created at [Discord Developer Settings](https://support.discord.com/hc/en-us/community/posts/360056220432-Login).</Tip>\nOnce you create the App, Find the Redirect URL or Callback URL field and configure the below Redirect URL:
+
+```
+https://backend.composio.dev/api/v1/auth-apps/add
+```
+
+After registering the app, copy the Client ID from the app page and generate/copy the Client Secret. On Composio's [supported apps](https://app.composio.dev/apps) page, find GitHub and click "Enable". Paste your Client ID and Secret, then Save to connect GitHub.
+
+"
+get_current_user_endpoint: "https://discord.com/developers/docs/resources/user"
+callback_url: https://backend.composio.dev/api/v1/auth-apps/add
+
+
 auth_schemes:
   - scheme_name: discord_oauth
     auth_mode: OAUTH2
